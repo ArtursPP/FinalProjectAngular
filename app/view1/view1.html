@@ -1,0 +1,49 @@
+<div ng-controller="View1Ctrl">
+
+    <strong> Get AccountById</strong>
+    AccountId: <input ng-model="accountIdField" name="accountIdField" type="text"/>
+    <input type="submit" value="[ Load Account ]" ng-click="getAccountById()"/>
+    <br/>
+    <br/>
+
+    <div id="errorMsgDiv" style="display:none"></div>
+    <div>
+        <table id="accountDataTable" style="display: none" width="50%" align="center">
+            <tr>
+                <td><b>Account number: </b></td>
+                <td name="account_number">{{accResponse.account_number}}</td>
+                <td width="5%"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><b>Ballance:</b></td>
+                <td>{{accResponse.ballance}} {{accResponse.currency}}</td>
+                <td width="5%">&nbsp</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td colspan="4"> CARDS</td>
+            </tr>
+            <tr>
+                <td><b>Card Holder</b></td>
+                <td><b>Card Owner</b></td>
+                <td nowrap="true"><b>Expire Date</b></td>
+                <td></td>
+            </tr>
+            </tr>
+        </table>
+    </div>
+    <tr ng-repeat="oneCard in accResponse.cardDTOs track by $index">
+
+        <td>{{oneCard.card_holder}}</td>
+        <td>{{oneCard.card_number}}</td>
+        <td>{{oneCard.exp_date}}</td>
+        <td> <div ng-click="removeCardFromAccount(card.id)">[ X ]</div></td>
+
+    </tr>
+
+
+
+
+</div>
