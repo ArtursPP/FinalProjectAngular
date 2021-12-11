@@ -1,0 +1,21 @@
+.main-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.5);
+}
+h1, h2 {
+    text-transform: uppercase;
+    font-weight: 400;
+}
+h2 {
+    margin: 0 0 0 8px;
+}
+table{
+    display: none;
+
+    align:center;
+}
