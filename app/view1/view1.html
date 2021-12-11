@@ -9,7 +9,7 @@
 
             <div id="errorMsgDiv" style="display:none"></div>
             <div>
-                <table id="accountDataTable" >
+                <table id="accountDataTable">
                     <tr>
                         <td><b>Account number: </b></td>
                         <td name="account_number">{{accResponse.account_number}}</td>
@@ -48,6 +48,45 @@
 
                 </table>
             </div>
+
+            <table class="accountInfo">
+                <tr>
+                    <td>ID</td>
+                    <td><input readonly="true" ng-model="accountId" name="accountId"></td>
+                </tr>
+                <tr>
+                    <td>Account Number</td>
+                    <td><input ng-model="accountNumber" name="accountNumber" maxlength="21"></td>
+                </tr>
+                <tr>
+                    <td>Balance</td>
+                    <td><input ng-model="ballance" name="ballance"></td>
+                </tr>
+                <tr>
+                    <td>Currency</td>
+                    <td>
+                        <select ng-model="currency" name="currency">
+
+                            <option value="EUR">EUR</option>
+                            <option value="USD">USD</option>
+                            <option value="RUB">RUB</option>
+                            <option value="NOK">NOK</option>
+                            <option value="GBP">GBP</option>
+                            <option value="PLZ">PLZ</option>
+                            <option value="CHF">CHF</option>
+                        </select>
+                    </td>
+                </tr>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button type="submit" ng-click="updateAccount()">[ Save Account ]</button>
+                    </td>
+                </tr>
+            </table>
+
+
         </form>
     </div>
 </div>

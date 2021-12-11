@@ -19,3 +19,6 @@ table{
 
     align:center;
 }
+.accountInfo{
+    display : flex;
+}

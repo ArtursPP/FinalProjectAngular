@@ -12,26 +12,36 @@ angular.module('myApp.view1', ['ngRoute'])
     .controller('View1Ctrl', ['$scope', '$http', '$timeout', function ($scope, $httpClient, $timeout) {
 
 
-
         $scope.getAccountById = function () {
             console.log($scope.accountIdField);
-            console.log("http://localhost:8080/api/rest/Account.svc/account(" +$scope.accountIdField+ ")");
+            console.log("http://localhost:8080/api/rest/Account.svc/account(" + $scope.accountIdField + ")");
 
-            $httpClient.get("http://localhost:8080/api/rest/Account.svc/account(" +$scope.accountIdField+ ")")
+            $httpClient.get("http://localhost:8080/api/rest/Account.svc/account(" + $scope.accountIdField + ")")
                 .then(function (response) {
+
+                    $scope.accountId = '';
+                    $scope.accountNumber = '';
+                    $scope.ballance = '';
+                    $scope.currency = '';
+
                     console.log(response);
-                    if(response.data.error === true){
+                    if (response.data.error === true) {
                         console.log("IN BLOCK: " + response)
-                        document.getElementById("errorMsgDiv").style.display='block';
-                        console.log("We want print: "+response.data.message);
+                        document.getElementById("errorMsgDiv").style.display = 'block';
+                        console.log("We want print: " + response.data.message);
                         document.getElementById("errorMsgDiv").innerHTML = response.data.message;
-                        document.getElementById('accountDataTable').style.display='none';
+                        document.getElementById('accountDataTable').style.display = 'none';
                     } else {
-                        document.getElementById("errorMsgDiv").style.display='none';
-                        document.getElementById('accountDataTable').style.display='block';
+                        document.getElementById("errorMsgDiv").style.display = 'none';
+                        document.getElementById('accountDataTable').style.display = 'block';
 
                         $scope.accResponse = response.data;
                         console.log($scope.accResponse.cardDTOs);
+
+                        $scope.accountId = response.data.id;
+                        $scope.accountNumber = response.data.account_number;
+                        $scope.ballance = response.data.ballance;
+                        $scope.currency = response.data.currency;
                     }
 
 
@@ -41,5 +51,22 @@ angular.module('myApp.view1', ['ngRoute'])
 
 
         }
+        $scope.updateAccount = function () {
+            let accountDTO = {
+                id: $scope.accountId,
+                account_number: $scope.accountNumber,
+                currency: $scope.currency,
+                ballance: $scope.ballance
+            }
+            let createAccountJSON = JSON.stringify(accountDTO);
+            $httpClient.put("http://localhost:8080/api/rest/Account.svc/account", createAccountJSON)
+                .then(function (response) {
+                    alert("Account updated")
+                }).catch(function (error) {
 
+                console.log(error);
+            });
+
+
+        }
     }]);

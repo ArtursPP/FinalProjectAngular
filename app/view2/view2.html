@@ -1,34 +1,35 @@
 <div ng-controller="View2Ctrl">
 
-        <div class="main-block">
-            <form>
-                <div class="left-part">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h1 class="mainH1">Register new Account</h1>
+    <div class="main-block">
+        <form>
+            <div class="left-part">
+                <i class="fas fa-graduation-cap"></i>
+                <h1 class="mainH1">Register new Account</h1>
 
-                </div>
+            </div>
+            <div class="error" id="error" style="display: none"></div>
+            <div class="info">
+                <input class="fname" type="text" ng-model="accountNumber" name="accountNumber"
+                       placeholder="Account number" maxlength="21">
 
-                <div class="info">
-                    <input class="fname" type="text" name="name" placeholder="Account number">
+                <input type="text" ng-model="ballance" name="ballance" placeholder="Debit" >
 
-                    <input type="text" name="name" placeholder="Debit">
+                <select ng-model="currency" name="currency">
 
-                    <select>
-                        <option value="Currency" selected>Currency</option>
-                        <option value="EUR">EUR</option>
-                        <option value="USD">USD</option>
-                        <option value="RUB">RUB</option>
-                        <option value="NOK">NOK</option>
-                        <option value="GBP">GBP</option>
-                        <option value="PLZ">PLZ</option>
-                        <option value="CHF">CHF</option>
-                    </select>
-                </div>
-                <div class="checkbox">
-                    <input type="checkbox" name="checkbox"><span>I agree to the <a
-                >Privacy Poalicy </a></span>
-                </div>
-                <button type="submit" href="/">Submit</button>
-            </form>
-        </div>
+                    <option value="EUR">EUR</option>
+                    <option value="USD">USD</option>
+                    <option value="RUB">RUB</option>
+                    <option value="NOK">NOK</option>
+                    <option value="GBP">GBP</option>
+                    <option value="PLZ">PLZ</option>
+                    <option value="CHF">CHF</option>
+                </select>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" ng-model="checkbox" name="checkbox"><span>I agree to the <a
+            >Privacy Poalicy </a></span>
+            </div>
+            <button type="submit" ng-click="saveNewAccount()">Submit</button>
+        </form>
+    </div>
 </div>
