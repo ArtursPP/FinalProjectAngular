@@ -13,21 +13,22 @@ angular.module('myApp.view1', ['ngRoute'])
 
         $scope.removeCardFromAccount = function (id) {
             console.log(id);
-            $httpClient.put("http://localhost:8080/api/rest/Account.svc/remove({id})" + id)
+            $httpClient.put("http://localhost:8080/api/rest/Account.svc/remove(" + id + ")")
                 .then(function (response) {
-                    console.log("Card removed");
+                    alert("Card with id: " + id + " removed");
 
                     var index = 0;
                     angular.forEach($scope.accResponse.cardDTOs, function (value) {
-                        if (value.id == id) {
+                        if (value.id !=null && value.id == id) {
                             $scope.accResponse.cardDTOs.splice(index, 1);
                         }
                         index++;
-                    }).catch(function (error) {
-                        console.log(error)
-                    })
-                })
+                    });
+                }).catch(function (error) {
+                console.log(error)
+            })
         }
+
 
         $scope.getAccountById = function () {
             console.log($scope.accountIdField);
