@@ -11,6 +11,23 @@ angular.module('myApp.view1', ['ngRoute'])
 
     .controller('View1Ctrl', ['$scope', '$http', '$timeout', function ($scope, $httpClient, $timeout) {
 
+        $scope.removeCardFromAccount = function (id) {
+            console.log(id);
+            $httpClient.put("http://localhost:8080/api/rest/Account.svc/remove({id})" + id)
+                .then(function (response) {
+                    console.log("Card removed");
+
+                    var index = 0;
+                    angular.forEach($scope.accResponse.cardDTOs, function (value) {
+                        if (value.id == id) {
+                            $scope.accResponse.cardDTOs.splice(index, 1);
+                        }
+                        index++;
+                    }).catch(function (error) {
+                        console.log(error)
+                    })
+                })
+        }
 
         $scope.getAccountById = function () {
             console.log($scope.accountIdField);
