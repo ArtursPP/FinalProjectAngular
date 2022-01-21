@@ -5,10 +5,14 @@
 
   margin-bottom: 2em;
   padding: 0 0 0.5em;
+
+
 }
+
 
 .menu:before {
   content: "[";
+
 }
 
 .menu:after {
@@ -17,10 +21,17 @@
 
 .menu > li {
   display: inline;
-  color: #222222;
+
 }
+
 
 .menu > li + li:before {
   content: "|";
   padding-right: 0.3em;
+}
+
+.dropdown{
+  margin-bottom: 2em;
+  margin-left: 2em;
+  margin-top: 2em;
 }
