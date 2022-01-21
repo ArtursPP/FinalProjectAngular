@@ -19,7 +19,7 @@ angular.module('myApp.view2', ['ngRoute'])
             if (!$scope.checkbox) {
                 alert("Please agree with terms")
             } else {
-                if($scope.account_number.length < 21){
+                if($scope.account_number < 21){
                     alert("Account number should be 21 symbols");
                     return;
                 }
