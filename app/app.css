@@ -1,8 +1,12 @@
 /* app css stylesheet */
-
+body{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #555555;
+}
 .menu {
   list-style: none;
-
+  display : inline-list-item;
   margin-bottom: 2em;
   padding: 0 0 0.5em;
 
@@ -20,7 +24,7 @@
 }
 
 .menu > li {
-  display: inline;
+  display : inline-list-item;
 
 }
 
@@ -34,4 +38,9 @@
   margin-bottom: 2em;
   margin-left: 2em;
   margin-top: 2em;
+
+}
+.dropdown-item{
+
+  background-color: #888888;
 }
